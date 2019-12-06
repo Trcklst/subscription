@@ -1,7 +1,7 @@
-package com.trcklst.getsubscription.ws.getsubscription.configurations;
+package com.trcklst.getsubscription.ws.configurations;
 
-import com.trcklst.getsubscription.ws.getsubscription.core.db.SubscriptionRepository;
-import com.trcklst.getsubscription.ws.getsubscription.mock.SubscriptionEntityMock;
+import com.trcklst.getsubscription.ws.core.db.SubscriptionRepository;
+import com.trcklst.getsubscription.ws.mock.SubscriptionEntityMock;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.TestConfiguration;

@@ -1,7 +1,7 @@
-package com.trcklst.getsubscription.ws.getsubscription.mock;
+package com.trcklst.getsubscription.ws.mock;
 
 import com.trcklst.getsubscription.api.SubscriptionType;
-import com.trcklst.getsubscription.ws.getsubscription.core.db.SubscriptionEntity;
+import com.trcklst.getsubscription.ws.core.db.SubscriptionEntity;
 
 import java.time.LocalDateTime;
 

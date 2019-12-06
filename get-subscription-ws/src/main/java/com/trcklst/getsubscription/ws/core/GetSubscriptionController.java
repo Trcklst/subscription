@@ -1,4 +1,4 @@
-package com.trcklst.getsubscription.ws.getsubscription.core;
+package com.trcklst.getsubscription.ws.core;
 
 import com.trcklst.getsubscription.api.GetSubscriptionDto;
 import lombok.RequiredArgsConstructor;

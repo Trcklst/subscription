@@ -1,4 +1,4 @@
-package com.trcklst.getsubscription.ws.getsubscription.core.db;
+package com.trcklst.getsubscription.ws.core.db;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -1,11 +1,11 @@
-package com.trcklst.getsubscription.ws.getsubscription;
+package com.trcklst.getsubscription.ws;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trcklst.getsubscription.api.GetSubscriptionDto;
-import com.trcklst.getsubscription.ws.getsubscription.configurations.DatabaseTestConfiguration;
-import com.trcklst.getsubscription.ws.getsubscription.core.db.SubscriptionEntity;
-import com.trcklst.getsubscription.ws.getsubscription.core.db.SubscriptionRepository;
-import com.trcklst.getsubscription.ws.getsubscription.mock.SubscriptionEntityMock;
+import com.trcklst.getsubscription.ws.configurations.DatabaseTestConfiguration;
+import com.trcklst.getsubscription.ws.core.db.SubscriptionEntity;
+import com.trcklst.getsubscription.ws.core.db.SubscriptionRepository;
+import com.trcklst.getsubscription.ws.mock.SubscriptionEntityMock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.trcklst.getsubscription.ws.getsubscription.core.db;
+package com.trcklst.getsubscription.ws.core.db;
 
 import com.trcklst.getsubscription.api.SubscriptionType;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.trcklst.getsubscription.ws.getsubscription.core.exceptions;
+package com.trcklst.getsubscription.ws.core.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
