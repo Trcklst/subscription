@@ -1,4 +1,4 @@
-package com.trcklst.getsubscription.core.db;
+package com.trcklst.getsubscription.api;
 
 public enum SubscriptionType {
 
