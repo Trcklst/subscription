@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -19,7 +18,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
-
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
@@ -37,7 +35,7 @@ class GetSubscriptionApplicationTests {
     @Autowired
     private SubscriptionRepository subscriptionRepository;
 
-    private static final String GET_SUBSCRIPTION_URI = "/api/subscription/{userId}";
+    private static final String GET_SUBSCRIPTION_URI = "/api/get-subscription/{userId}";
     protected MockMvc mockMvc;
     private ObjectMapper objectMapper;
     @PostConstruct
@@ -54,8 +52,7 @@ class GetSubscriptionApplicationTests {
     @Test
     void getWithValidUserId() throws Exception {
         SubscriptionEntity subscriptionEntity = SubscriptionEntityMock.SUBSCRIPTION_PREMIUM;
-        String response = mockMvc.perform(get(GET_SUBSCRIPTION_URI, subscriptionEntity.getUserId())
-                .contentType(MediaType.APPLICATION_JSON))
+        String response = mockMvc.perform(get(GET_SUBSCRIPTION_URI, subscriptionEntity.getUserId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn()
                 .getResponse()
@@ -69,8 +66,7 @@ class GetSubscriptionApplicationTests {
     @Test
     void userIdWithoutSubscription() throws Exception {
         Integer userIdWithoutSubscription = getUserIdWithoutSubscription();
-        mockMvc.perform(get(GET_SUBSCRIPTION_URI, userIdWithoutSubscription)
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get(GET_SUBSCRIPTION_URI, userIdWithoutSubscription))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 

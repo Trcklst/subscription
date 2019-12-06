@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/subscription/{userId}")
+@RequestMapping("/api/get-subscription/{userId}")
 public class GetSubscriptionController {
 
     private final GetSubscriptionService getSubscriptionService;
