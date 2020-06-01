@@ -3,5 +3,5 @@
 ### Use
 
 ```
-GET {host}/api/get-subscription/{userId}
+GET {host}/api/subscription/{userId}
 ```

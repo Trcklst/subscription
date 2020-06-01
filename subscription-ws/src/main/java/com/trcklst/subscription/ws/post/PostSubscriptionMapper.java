@@ -1,11 +1,11 @@
-package com.trcklst.subscription.ws.get;
+package com.trcklst.subscription.ws.post;
 
 import com.trcklst.subscription.api.SubscriptionDto;
 import com.trcklst.subscription.ws.db.SubscriptionEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface GetSubscriptionMapper {
+public interface PostSubscriptionMapper {
 
     SubscriptionDto map(SubscriptionEntity subscriptionEntity);
 }

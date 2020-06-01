@@ -2,8 +2,8 @@ package com.trcklst.subscription.ws.get;
 
 import com.trcklst.subscription.api.SubscriptionDto;
 import com.trcklst.subscription.ws.get.exceptions.NoSubscriptionForUserIdException;
-import com.trcklst.subscription.ws.get.db.SubscriptionEntity;
-import com.trcklst.subscription.ws.get.db.SubscriptionRepository;
+import com.trcklst.subscription.ws.db.SubscriptionEntity;
+import com.trcklst.subscription.ws.db.SubscriptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
