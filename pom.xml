@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>get-subscription-api</module>
-        <module>get-subscription-ws</module>
+        <module>subscription-api</module>
+        <module>subscription-ws</module>
     </modules>
     <groupId>com.trcklst</groupId>
-    <artifactId>get-subscription</artifactId>
+    <artifactId>subscription</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>get-subscription</name>
-    <description>Get subscription service</description>
+    <name>subscription</name>
+    <description>Subscription service</description>
 
     <properties>
         <java.version>11</java.version>
