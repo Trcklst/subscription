@@ -16,6 +16,7 @@ public class SubscriptionEntityMock {
         subscription.setType(SubscriptionType.PREMIUM);
         subscription.setEndDate(LocalDateTime.now().plusMonths(1));
         subscription.setStartDate(LocalDateTime.now().minusMonths(1));
+        subscription.setTransactionId("transaction1");
         subscription.setUserId(1);
         return subscription;
     }
@@ -26,6 +27,7 @@ public class SubscriptionEntityMock {
         subscription.setType(SubscriptionType.PRO);
         subscription.setEndDate(LocalDateTime.now().plusMonths(1));
         subscription.setStartDate(LocalDateTime.now().minusMonths(1));
+        subscription.setTransactionId("transaction2");
         subscription.setUserId(2);
         return subscription;
     }
