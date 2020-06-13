@@ -14,10 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class PostSubscriptionService {
+
+    private static final Integer FIRST_ID = 1;
 
     private PostSubscriptionMapper postSubscriptionMapper;
     private SubscriptionRepository subscriptionRepository;
@@ -26,8 +29,9 @@ public class PostSubscriptionService {
         PaymentMethod paymentMethod = createPaymentMethod(postSubscriptionIn);
         PaymentIntent paymentIntent = createPaymentIntent(postSubscriptionIn, paymentMethod);
         SubscriptionEntity subscriptionEntity = new SubscriptionEntity();
-        subscriptionEntity.setId(postSubscriptionIn.getUserId());
-        subscriptionEntity.setEndDate(LocalDateTime.now().plusMonths(1));
+        subscriptionEntity.setId(getId());
+        subscriptionEntity.setUserId(postSubscriptionIn.getUserId());
+        subscriptionEntity.setEndDate(computeEndDate(postSubscriptionIn));
         subscriptionEntity.setStartDate(LocalDateTime.now());
         subscriptionEntity.setType(postSubscriptionIn.getSubscriptionType());
         subscriptionEntity.setTransactionId(paymentIntent.getId());
@@ -58,6 +62,17 @@ public class PostSubscriptionService {
                 .setPaymentMethod(paymentMethod.getId())
                 .build();
         return PaymentIntent.create(paymentIntentCreateParams);
+    }
+
+    private Integer getId() {
+        Optional<SubscriptionEntity> maxIdAccount = subscriptionRepository.findFirstByOrderByIdDesc();
+        return maxIdAccount.map(account -> account.getId() + 1).orElse(FIRST_ID);
+    }
+
+    private LocalDateTime computeEndDate(PostSubscriptionIn postSubscriptionIn) {
+        Optional<SubscriptionEntity> subscriptionEntity = subscriptionRepository.findFirstByUserIdOrderByEndDateDesc(postSubscriptionIn.getUserId());
+        return subscriptionEntity.map(subscription -> subscription.getEndDate().plusMonths(1))
+                .orElse(LocalDateTime.now().plusMonths(1));
     }
 
     @Autowired
