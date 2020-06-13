@@ -20,3 +20,4 @@ Content-Type: application/json
    "subscriptionType": {SubscriptionType}
 }
 ```
+Credit card for testing : https://stripe.com/docs/testing
