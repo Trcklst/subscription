@@ -7,6 +7,6 @@ import lombok.Data;
 public class PostSubscriptionIn {
 
     private Integer userId;
-    private String creditCard;
+    private CreditCardIn creditCard;
     private SubscriptionType subscriptionType;
 }

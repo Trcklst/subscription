@@ -5,11 +5,18 @@
 ```
 GET {host}/api/subscription/{userId}
 ```
-
+```
 POST {host}/api/subscription
+Content-Type: application/json
 
 {
-    userId: {Integer},
-    subscriptionType: {SubscriptionType},
-    creditCard: {String}
+   "userId": {Integer},
+   "creditCard": {
+     "number": {String},
+     "expirationMonth": {Long},
+     "expirationYear": {Long},
+     "cvc": {String}
+   },
+   "subscriptionType": {SubscriptionType}
 }
+```

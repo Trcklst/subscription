@@ -23,4 +23,6 @@ public class SubscriptionEntity {
     private LocalDateTime endDate;
     @Field
     private Integer userId;
+    @Field
+    private String transactionId;
 }

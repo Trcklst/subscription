@@ -67,6 +67,11 @@
             <version>2.10.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>19.21.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
