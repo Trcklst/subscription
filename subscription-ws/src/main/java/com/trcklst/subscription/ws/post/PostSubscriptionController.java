@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/subscription")
@@ -18,7 +20,7 @@ public class PostSubscriptionController {
     private PostSubscriptionService postSubscriptionService;
 
     @PostMapping
-    public SubscriptionDto postSubscription(@RequestBody PostSubscriptionIn postSubscriptionIn) throws StripeException {
+    public SubscriptionDto postSubscription(@RequestBody @Valid PostSubscriptionIn postSubscriptionIn) throws StripeException {
         return postSubscriptionService.process(postSubscriptionIn);
     }
 
