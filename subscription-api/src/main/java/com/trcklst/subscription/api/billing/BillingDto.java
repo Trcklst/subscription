@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class BillingDto {
 
-    List<BillingItem> billingItems;
+    private List<BillingItem> billingItems;
 }

@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class BillingService {
 
     private final SubscriptionRepository subscriptionRepository;
+    private final BillingMapper billingMapper;
 
     public BillingDto process() {
         Integer userId = RequestUtils.getUserIdFromHeader();
@@ -24,7 +25,7 @@ public class BillingService {
 
         List<BillingItem> billingItems = subscriptionEntities.stream()
                 .filter(Objects::nonNull)
-                .map(this::mapItem)
+                .map(billingMapper::map)
                 .collect(Collectors.toList());
 
         BillingDto billingDto = new BillingDto();
@@ -32,16 +33,4 @@ public class BillingService {
         return billingDto;
     }
 
-    private BillingItem mapItem(SubscriptionEntity subscriptionEntity) {
-        return BillingItem.builder()
-                .price(formatPriceInEuro(subscriptionEntity))
-                .invoice(subscriptionEntity.getInvoice())
-                .date(subscriptionEntity.getStartDate())
-                .build();
-    }
-
-    private Double formatPriceInEuro(SubscriptionEntity subscriptionEntity) {
-        double priceInCents = (double) subscriptionEntity.getType().getPriceInCents();
-        return priceInCents / 100;
-    }
 }

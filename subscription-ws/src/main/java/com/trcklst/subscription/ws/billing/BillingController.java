@@ -1,6 +1,5 @@
 package com.trcklst.subscription.ws.billing;
 
-import com.stripe.exception.StripeException;
 import com.trcklst.subscription.api.billing.BillingDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,7 @@ public class BillingController {
     private final BillingService billingService;
 
     @GetMapping
-    public BillingDto billing() throws StripeException {
+    public BillingDto billing() {
         return billingService.process();
     }
 }

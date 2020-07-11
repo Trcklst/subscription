@@ -22,5 +22,9 @@ public class BillingTest extends SubscriptionApplicationTests {
                 .getContentAsString();
         BillingDto billingDto = objectMapper.readValue(response, BillingDto.class);
         Assertions.assertThat(billingDto.getBillingItems()).hasSize(1);
+        Assertions.assertThat(billingDto.getBillingItems().get(0))
+                .hasFieldOrPropertyWithValue("price", 3.99)
+                .hasFieldOrPropertyWithValue("invoice", SubscriptionEntityMock.SUBSCRIPTION_PREMIUM.getInvoice());
+
     }
 }
