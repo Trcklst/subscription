@@ -21,7 +21,7 @@ public class BillingService {
 
     public BillingDto process() {
         Integer userId = RequestUtils.getUserIdFromHeader();
-        List<SubscriptionEntity> subscriptionEntities = subscriptionRepository.findAllByUserId(userId);
+        List<SubscriptionEntity> subscriptionEntities = subscriptionRepository.findAllByUserIdOrderByStartDateDesc(userId);
 
         List<BillingItem> billingItems = subscriptionEntities.stream()
                 .filter(Objects::nonNull)

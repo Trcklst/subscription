@@ -11,5 +11,5 @@ public interface SubscriptionRepository extends MongoRepository<SubscriptionEnti
 
     Optional<SubscriptionEntity> findFirstByOrderByIdDesc();
 
-    List<SubscriptionEntity> findAllByUserId(Integer userId);
+    List<SubscriptionEntity> findAllByUserIdOrderByStartDateDesc(Integer userId);
 }
