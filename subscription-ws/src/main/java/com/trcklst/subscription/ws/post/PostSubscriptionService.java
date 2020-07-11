@@ -61,6 +61,7 @@ public class PostSubscriptionService {
                 .setAmount(postSubscriptionIn.getSubscriptionType().getPriceInCents())
                 .setCurrency("eur")
                 .setConfirm(true)
+                .setDescription("Subscription Trcklst for 1 month : " + postSubscriptionIn.getSubscriptionType().name())
                 .addPaymentMethodType("card")
                 .setPaymentMethod(paymentMethod.getId())
                 .build();
