@@ -7,8 +7,9 @@ import com.stripe.param.PaymentIntentCreateParams;
 import com.stripe.param.PaymentMethodCreateParams;
 import com.trcklst.subscription.api.SubscriptionDto;
 import com.trcklst.subscription.api.post.PostSubscriptionIn;
-import com.trcklst.subscription.ws.db.SubscriptionEntity;
-import com.trcklst.subscription.ws.db.SubscriptionRepository;
+import com.trcklst.subscription.ws.common.db.SubscriptionEntity;
+import com.trcklst.subscription.ws.common.db.SubscriptionRepository;
+import com.trcklst.subscription.ws.common.utils.RequestUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,15 +27,17 @@ public class PostSubscriptionService {
     private SubscriptionRepository subscriptionRepository;
 
     public SubscriptionDto process(PostSubscriptionIn postSubscriptionIn) throws StripeException {
+        Integer userId = RequestUtils.getUserIdFromHeader();
         PaymentMethod paymentMethod = createPaymentMethod(postSubscriptionIn);
         PaymentIntent paymentIntent = createPaymentIntent(postSubscriptionIn, paymentMethod);
         SubscriptionEntity subscriptionEntity = new SubscriptionEntity();
         subscriptionEntity.setId(getId());
-        subscriptionEntity.setUserId(postSubscriptionIn.getUserId());
-        subscriptionEntity.setEndDate(computeEndDate(postSubscriptionIn));
+        subscriptionEntity.setUserId(userId);
+        subscriptionEntity.setEndDate(computeEndDate(userId));
         subscriptionEntity.setStartDate(LocalDateTime.now());
         subscriptionEntity.setType(postSubscriptionIn.getSubscriptionType());
         subscriptionEntity.setTransactionId(paymentIntent.getId());
+        subscriptionEntity.setInvoice(paymentIntent.getCharges().getData().get(0).getReceiptUrl());
 
         subscriptionEntity = subscriptionRepository.save(subscriptionEntity);
         return postSubscriptionMapper.map(subscriptionEntity);
@@ -69,8 +72,8 @@ public class PostSubscriptionService {
         return maxIdAccount.map(account -> account.getId() + 1).orElse(FIRST_ID);
     }
 
-    private LocalDateTime computeEndDate(PostSubscriptionIn postSubscriptionIn) {
-        Optional<SubscriptionEntity> subscriptionEntity = subscriptionRepository.findFirstByUserIdOrderByEndDateDesc(postSubscriptionIn.getUserId());
+    private LocalDateTime computeEndDate(Integer userId) {
+        Optional<SubscriptionEntity> subscriptionEntity = subscriptionRepository.findFirstByUserIdOrderByEndDateDesc(userId);
         return subscriptionEntity.map(subscription -> subscription.getEndDate().plusMonths(1))
                 .orElse(LocalDateTime.now().plusMonths(1));
     }

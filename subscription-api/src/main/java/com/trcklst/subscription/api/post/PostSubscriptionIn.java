@@ -16,8 +16,6 @@ import javax.validation.constraints.NotNull;
 public class PostSubscriptionIn {
 
     @NotNull
-    private Integer userId;
-    @NotNull
     @Valid
     private CreditCardIn creditCard;
     @NotNull

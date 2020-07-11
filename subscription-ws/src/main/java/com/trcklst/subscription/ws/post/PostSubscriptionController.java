@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/subscription")
+@RequestMapping("/api/subscription/")
 public class PostSubscriptionController {
 
     private PostSubscriptionService postSubscriptionService;

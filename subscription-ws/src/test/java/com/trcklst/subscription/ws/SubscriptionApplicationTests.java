@@ -2,8 +2,8 @@ package com.trcklst.subscription.ws;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trcklst.subscription.ws.configurations.DatabaseTestConfiguration;
-import com.trcklst.subscription.ws.db.SubscriptionEntity;
-import com.trcklst.subscription.ws.db.SubscriptionRepository;
+import com.trcklst.subscription.ws.common.db.SubscriptionEntity;
+import com.trcklst.subscription.ws.common.db.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -32,6 +32,8 @@ class SubscriptionApplicationTests {
     protected MockMvc mockMvc;
     protected ObjectMapper objectMapper;
 
+    protected static final String SUBSCRIPTION_URI = "/api/subscription/";
+
     @PostConstruct
     void init() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
@@ -44,7 +46,8 @@ class SubscriptionApplicationTests {
                 .map(SubscriptionEntity::getUserId)
                 .collect(Collectors.toList());
         return new Random().ints()
-                .filter(i -> !userIdWithSubscription.contains(i))
+                .filter(id -> id > 0)
+                .filter(id -> !userIdWithSubscription.contains(id))
                 .findFirst()
                 .orElseThrow();
     }

@@ -1,7 +1,7 @@
 package com.trcklst.subscription.ws.mock;
 
 import com.trcklst.subscription.api.SubscriptionType;
-import com.trcklst.subscription.ws.db.SubscriptionEntity;
+import com.trcklst.subscription.ws.common.db.SubscriptionEntity;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +17,7 @@ public class SubscriptionEntityMock {
         subscription.setEndDate(LocalDateTime.now().plusMonths(1));
         subscription.setStartDate(LocalDateTime.now().minusMonths(1));
         subscription.setTransactionId("transaction1");
+        subscription.setInvoice("/url/to/invoice/premium");
         subscription.setUserId(1);
         return subscription;
     }
@@ -28,6 +29,7 @@ public class SubscriptionEntityMock {
         subscription.setEndDate(LocalDateTime.now().plusMonths(1));
         subscription.setStartDate(LocalDateTime.now().minusMonths(1));
         subscription.setTransactionId("transaction2");
+        subscription.setInvoice("/url/to/invoice/pro");
         subscription.setUserId(2);
         return subscription;
     }

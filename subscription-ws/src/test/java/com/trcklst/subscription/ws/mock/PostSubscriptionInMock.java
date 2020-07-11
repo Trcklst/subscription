@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 public class PostSubscriptionInMock {
 
-    public static final PostSubscriptionIn IN_WITHOUT_USER_ID = createPostSubscriptionInWithoutUserId();
+    public static final PostSubscriptionIn IN = createPostSubscriptionIn();
 
-    private static PostSubscriptionIn createPostSubscriptionInWithoutUserId() {
+    private static PostSubscriptionIn createPostSubscriptionIn() {
         return PostSubscriptionIn.builder()
                 .creditCard(creditCardForTest())
                 .subscriptionType(SubscriptionType.PRO)

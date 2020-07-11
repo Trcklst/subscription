@@ -1,4 +1,4 @@
-package com.trcklst.subscription.ws.db;
+package com.trcklst.subscription.ws.common.db;
 
 import com.trcklst.subscription.api.SubscriptionType;
 import lombok.Data;
@@ -24,4 +24,6 @@ public class SubscriptionEntity {
     private Integer userId;
     @Field
     private String transactionId;
+    @Field
+    private String invoice;
 }
