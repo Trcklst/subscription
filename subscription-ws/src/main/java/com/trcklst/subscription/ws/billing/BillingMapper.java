@@ -11,6 +11,7 @@ public interface BillingMapper {
 
     @Mapping(target = "date", source = "startDate")
     @Mapping(target = "price", source = "type")
+    @Mapping(target = "expiration", source = "endDate")
     BillingItem map(SubscriptionEntity subscriptionEntity);
 
     default Double formatPriceInEuro(SubscriptionType type) {

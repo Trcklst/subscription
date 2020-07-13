@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class BillingItem {
 
     private LocalDateTime date;
+    private LocalDateTime expiration;
     private Double price;
     private String invoice;
 }
